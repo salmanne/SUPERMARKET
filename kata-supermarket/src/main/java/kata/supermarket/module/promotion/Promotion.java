@@ -2,6 +2,8 @@ package kata.supermarket.module.promotion;
 
 import kata.supermarket.enums.TypePromotion;
 
+import java.util.Date;
+
 public class Promotion {
 
     private String nom;
@@ -9,6 +11,8 @@ public class Promotion {
     private Facteur facteurDroite;
     private TypePromotion type;
     private double reduction;
+    private Date dateDebut;
+    private Date dateFin;
 
     public String getNom() {
         return nom;
@@ -48,5 +52,21 @@ public class Promotion {
 
     public void setReduction(double reduction) {
         this.reduction = reduction;
+    }
+
+    public Date getDateDebut() {
+        return dateDebut;
+    }
+
+    public void setDateDebut(Date dateDebut) {
+        this.dateDebut = dateDebut;
+    }
+
+    public Date getDateFin() {
+        return dateFin;
+    }
+
+    public void setDateFin(Date dateFin) {
+        this.dateFin = dateFin;
     }
 }

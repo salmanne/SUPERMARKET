@@ -4,17 +4,17 @@ import java.util.List;
 
 public class Panier implements Calculable {
 
-    private List<Produit> produits;
+    private List<Ligne> lignes;
 
     public double calculerTotal() {
-        return produits.stream().mapToDouble(Produit::calculerTotal).sum();
+        return lignes.stream().mapToDouble(Ligne::calculerTotal).sum();
     }
 
-    void setProduits(List<Produit> produits) {
-        this.produits = produits;
+    void setLignes(List<Ligne> lignes) {
+        this.lignes = lignes;
     }
 
-    List<Produit> getProduits() {
-        return produits;
+    List<Ligne> getLignes() {
+        return lignes;
     }
 }

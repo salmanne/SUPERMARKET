@@ -1,41 +1,16 @@
 package kata.supermarket.module.produit;
 
 
-import kata.supermarket.enums.TypePromotion;
 import kata.supermarket.module.promotion.Promotion;
 
-public class Produit implements Calculable {
+public class Produit {
 
+    private String nom;
     private double prix;
     private Promotion promotion;
-    private double quantite;
+    private double quantiteStock;
 
-    public double calculerTotal() {
-        if (promotion != null) {
-            if (promotion.getType() == TypePromotion.SUR_PLUSIEURS) {
-                return calculerPromotionSurPlusieurs();
-            } else {
-                return calculerPromotionReduction();
-            }
-        }
-        return prix * quantite;
-    }
-
-    private double calculerPromotionReduction() {
-        return (prix - promotion.getReduction()) * quantite;
-    }
-
-    private double calculerPromotionSurPlusieurs() {
-        double facteurDroite = promotion.getFacteurDroite().getValeur();
-        double facteurGauche = promotion.getFacteurGauche().getValeur();
-
-        if (!promotion.getFacteurDroite().isStatics()) {
-            facteurDroite = facteurDroite * prix;
-        }
-        return ((int) (quantite / facteurGauche)) * facteurDroite + ((quantite % facteurGauche) * prix);
-    }
-
-    public double getPrix() {
+    double getPrix() {
         return prix;
     }
 
@@ -43,7 +18,7 @@ public class Produit implements Calculable {
         this.prix = prix;
     }
 
-    public Promotion getPromotion() {
+    Promotion getPromotion() {
         return promotion;
     }
 
@@ -51,11 +26,19 @@ public class Produit implements Calculable {
         this.promotion = promotion;
     }
 
-    public double getQuantite() {
-        return quantite;
+    public String getNom() {
+        return nom;
     }
 
-    void setQuantite(double quantite) {
-        this.quantite = quantite;
+    public void setNom(String nom) {
+        this.nom = nom;
+    }
+
+    public double getQuantiteStock() {
+        return quantiteStock;
+    }
+
+    public void setQuantiteStock(double quantiteStock) {
+        this.quantiteStock = quantiteStock;
     }
 }

@@ -6,15 +6,14 @@ import kata.supermarket.module.promotion.Promotion;
 
 class MockObjectBuilder {
 
-    static Produit buildProduit(double quantite, double prix, Promotion promotion) {
+    static Produit buildProduit(double prix, double quantiteStock, Promotion promotion) {
         Produit produit = new Produit();
         produit.setPrix(prix);
-        produit.setQuantite(quantite);
         produit.setPromotion(promotion);
         return produit;
     }
 
-    static Promotion buildPromotion(int facteurGauche, int facteurDroite, boolean isStatic) {
+    static Promotion buildPromotion(int facteurGauche, double facteurDroite, boolean isStatic) {
         Promotion promotion = new Promotion();
         promotion.setFacteurGauche(new Facteur(facteurGauche, false));
         promotion.setFacteurDroite(new Facteur(facteurDroite, isStatic));
@@ -27,5 +26,9 @@ class MockObjectBuilder {
         promotion.setReduction(reduction);
         promotion.setType(TypePromotion.REDUCTION);
         return promotion;
+    }
+
+    static Ligne buildLigne(Produit produit, double quantite) {
+        return new Ligne(produit, quantite);
     }
 }
